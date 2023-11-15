@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import Body from '../src/components/Body'
-
+import Body from '../components/Body'
 function Trending() {
   return (
     <Body pageName='Trending Today'/>

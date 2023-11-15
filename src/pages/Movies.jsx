@@ -1,5 +1,5 @@
 import React from 'react'
-import Body from '../src/components/Body'
+import Body from '../components/Body'
 
 function Movies() {
   return (
