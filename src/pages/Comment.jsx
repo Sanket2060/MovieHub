@@ -1,11 +1,11 @@
 import React from 'react'
 import { FaRegCommentDots } from "react-icons/fa6";
-function comment() {
+function Comment() {
   return (
-    <div className="commentsection flex flex-col justify-center bg-[#22254b] min-h-[700px]">
+    <div className="commentsection flex flex-col items-center bg-[#22254b] min-h-[700px]">
 
-      <div className="form w-[250px] h-[450px] rounded-xl bg-white">
-       <div className="visualcircle w-[25px] h-[25px] bg-red-600 rounded-[50%]"><FaRegCommentDots/></div>
+      <div className="form w-[250px] h-[450px] rounded-xl bg-white mx-5 flex flex-col items-center">
+       <div className="visualcircle w-11 h-11 bg-red-600 rounded-[50%] flex justify-center items-center"><FaRegCommentDots /></div>
         <form action="">
           <label htmlFor="name">
             Name:
@@ -21,4 +21,4 @@ function comment() {
   )
 }
 
-export default comment
+export default Comment
