@@ -49,9 +49,9 @@ function Body({ pageName = "Trending Today" }) {
   
   return (
     <>
-      <div className="movies-box bg-[#22254b] min-h-[700px] ">
+      <div className="movies-box bg-[#22254b] min-h-[700px]  ">
         <div className="pagename text-[#9fafb8] text-3xl text-center py-14">{pageName}</div>
-        <div className="movies grid grid-cols-4 justify-items-center gap-y-14">
+        <div className="movies grid grid-cols-4 justify-items-center gap-14 pb-28" >
         {
            (data.length>0)?
     
@@ -59,7 +59,7 @@ function Body({ pageName = "Trending Today" }) {
 
               return(
                 <div className="movie w-[300px] h-[450px] bg-black" key={movie.id}>
-            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[395px] bg-cover'/>
+                    <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[395px] bg-cover'/>                  
             <div className="description text-white flex justify-between px-5 py-3 bg-[#373b69] ">
               <span className="moviename font-bold text-xl ">{(pageName== "TVSeries")?movie.name:movie.original_title}</span>
               <span className="rating bg-black w-9 h-9 flex justify-center items-center">{movie.vote_average.toFixed(1)}</span>
