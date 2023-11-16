@@ -8,6 +8,8 @@ function Search() {
   const [searchValue,setSearchValue]=useState("");
   const [data,setData]=useState([]);
   const myRef = useRef(null);
+  const movieSearchRef=useRef(null);
+  const TVSeriesSearchRef=useRef(null);
   const SearchLogic=()=>{
     const options = {
       method: 'GET',
@@ -40,6 +42,19 @@ function Search() {
    
      
    }, [data])
+  //  useEffect(() => {
+  //    if (movieSearch){
+  //       movieSearchRef.current.className.addClassName("underline");
+  //       .current.className.addClassName("underline");
+
+  //    }
+  //    else{
+
+  //    }
+   
+    
+  //  }, [movieSearch])
+   
    
   
   return (
@@ -47,7 +62,7 @@ function Search() {
       <div className='bg-[#22254b] min-h-[700px] flex flex-col items-center p-8'>
 
           <form action="">
-            <input type="search" name="" id="" placeholder='Search' className='w-[1200px] h-10' ref={myRef} onChange={(e)=>{
+            <input type="search" name="" id="" placeholder='Search' className='w-[1200px] h-10 py-5' ref={myRef} onChange={(e)=>{
               setSearchValue(e.currentTarget.value);
             }} />
             <button type="submit" className='border-2' onClick={(e)=>{
@@ -56,8 +71,10 @@ function Search() {
             }}><FiSearch className='text-white text-4xl' /></button>
           </form>
           <div className="choose  text-[#9fafb8] flex justify-start w-[1235px] m-7 text-xl placeholder:text-2xl placeholder:pl-3">
-            <button className='m-5' onClick={()=>{setmovieSearch(true)}}>Search Movies</button>
-            <button onClick={()=>{setmovieSearch(false)}}>Search TVSeries</button>
+            <button className='m-5' onClick={()=>{setmovieSearch(true)}} ref={movieSearchRef}>Search Movies</button>
+            <button onClick={(e)=>{
+              setmovieSearch(false)
+            }} ref={TVSeriesSearchRef}>Search TVSeries</button>
           </div>
           <div className="movies grid grid-cols-4 justify-items-center gap-14 pb-20">
         {
@@ -80,7 +97,7 @@ function Search() {
             </div>
           </div>
                 )
-              }):  <div>Can't find any search results</div>
+              }):  <div className="text-white text-2xl text-center">Search above to get results</div>
             }
           
         

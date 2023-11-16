@@ -14,6 +14,7 @@ function Comment() {
               <input type="text" placeholder='Enter your name' className='w-80 mb-8 h-10 rounded-lg ' />
               <input type="text" placeholder='Enter your message' className='w-80 mb-8 h-10 rounded-lg' />
               <button type='submit' className='text-lg bg-red-600 text-black rounded-lg w-20 px-3 py-1'>Submit</button>
+             <div className='text-white'> This is dummy  page.It is still under development</div>
             </form>
           </div>
         </div>

@@ -66,7 +66,7 @@ function Body({ pageName = "Trending Today" }) {
             </div>
           </div>
                 )
-              }):  <div>Can't get {pageName} at the moment</div>
+              }):  <div className='text-white text-2xl'>Loading...</div>
             }
           
         
