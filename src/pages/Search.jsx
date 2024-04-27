@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { useRef } from "react";
 import { FiSearch } from "react-icons/fi";
-// CSS knowledge lacks here
 function Search() {
   const [movieSearch, setmovieSearch] = useState(true);
   const [searchValue, setSearchValue] = useState("");
@@ -97,7 +96,7 @@ function Search() {
 
                     }
                     <div className="description text-white flex justify-between px-5 py-3 bg-[#373b69] ">
-                      <span className="moviename font-bold text-xl ">{movie.original_title}</span>
+                      <span className="moviename font-bold text-xl ">{movie.original_title || movie.name}</span>
                       <span className="rating bg-black w-9 h-9 flex justify-center items-center">{movie.vote_average.toFixed(1)}</span>
                     </div>
                   </div>
