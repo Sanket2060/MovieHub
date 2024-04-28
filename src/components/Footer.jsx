@@ -33,12 +33,12 @@ function Footer() {
                     <span className='text-white'>SEARCH</span>
                 </div>
             </Link>
-            <Link to='/comment'>
+            {/* <Link to='/comment'>
                 <div className="comment">
                     <BiComment className='text-white text-3xl' />
                     <span className='text-white text-left'>COMMENT</span>
                 </div>
-            </Link>
+            </Link> */}
             </div >
         </footer>
     )

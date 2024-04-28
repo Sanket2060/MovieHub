@@ -63,7 +63,7 @@ function Search() {
         {/* <form action=""> */}
         <div className="flex">
 
-          <input type="search" name="" id="" placeholder='Search' className='w-[1200px] h-10 p-4' ref={myRef} onChange={(e) => {
+          <input type="search" name="" id="" placeholder='Search' className='mobile:w-72 lg:w-[800px] xl:w-[1275px] 2xl:w-[1420px] h-10 w-[450px] p-4' ref={myRef} onChange={(e) => {
             setSearchValue(e.currentTarget.value);
           }} />
           <div type="submit" className='border-2 hover:cursor-pointer ' onClick={(e) => {
@@ -72,7 +72,7 @@ function Search() {
           }}><FiSearch className='text-white text-4xl' /></div>
           </div>
         {/* </form> */}
-        <div className="choose  text-[#9fafb8] flex justify-start w-[1235px] m-7 text-xl placeholder:text-2xl placeholder:pl-3">
+        <div className="choose  text-[#9fafb8] flex justify-start   m-7 text-xl placeholder:text-2xl placeholder:pl-3">
           <button className={`m-5 ${movieSearch==true?'underline':''}  `} onClick={() => { setmovieSearch(true) }} ref={movieSearchRef}>Search Movies</button>
           <button onClick={(e) => {
             setmovieSearch(false)
@@ -80,14 +80,14 @@ function Search() {
           className={`m-5 ${movieSearch==false?'underline':''}  `}
           >Search TVSeries</button>
         </div>
-        <div className="movies grid grid-cols-4 justify-items-center gap-14 pb-20">
+        <div className="movies grid grid-cols-1 gap-8  sm:grid-cols-2 sm:gap-x-12 sm:pb-28 md:gap-14 lg:grid-cols-3  xl:grid-cols-4 xl:gap-y-10 justify-items-center  pb-28" >
           {
             (data.length > 0) ?
 
               data.map((movie) => {
 
                 return (
-                  <div className="movie w-[300px] h-[450px] bg-black" key={movie.id}>
+                  <div className="movie w-[300px] hover:cursor-pointer h-[450px] bg-black" key={movie.id}>
                     {
                       movie.poster_path ?
 
