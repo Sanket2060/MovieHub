@@ -5,6 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
     theme: {
+      extend: {
+        fontFamily: {
+          jersey: ['"Jersey 15"']
+        }
+      },
       screens:{
         'mobile':'330px',
         'largemobile':'510',
