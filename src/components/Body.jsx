@@ -180,7 +180,7 @@ function Body({ pageName = "Trending Today" }) {
 
                           <div className=''>
                             <div className='w-full largemobile:h-80 rounded-3xl'>
-                              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[200px] w-fit  rounded-3xl' />
+                              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[200px] w-[100%]  rounded-3xl' />
                             </div>
                             <div className='movie rounded-2xl shadow-xl  p-5 border absolute top-[11rem] bg-white w-full'>
 
