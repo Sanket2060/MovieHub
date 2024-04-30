@@ -7,7 +7,7 @@ import { IoTvSharp } from "react-icons/io5";
 import { BiComment } from "react-icons/bi";
 function Footer() {
     return (
-        <footer className='bg-[#373b69] h-[75px] flex justify-center items-center fixed bottom-0 w-full '>
+        <footer className='bg-[#373b69] h-[75px] flex justify-center items-center fixed bottom-0 w-full z-10'>
             <div className="menucontainer flex justify-between w-[700px]">
             <Link to='/'>
                 <div className="trending">

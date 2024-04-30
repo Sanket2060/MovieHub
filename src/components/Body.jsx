@@ -178,15 +178,15 @@ function Body({ pageName = "Trending Today" }) {
                         <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] rounded-t-3xl max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  bg-white  pt-0 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none font-sans ">
                           <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0 h-fit" />
 
-                          <div className='container'>
-                            <div className=''>
-                              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[200px] w-fit rounded-3xl' />
+                          <div className=''>
+                            <div className='w-full largemobile:h-80 rounded-3xl'>
+                              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[200px] w-fit  rounded-3xl' />
                             </div>
                             <div className='movie rounded-2xl shadow-xl  p-5 border absolute top-[11rem] bg-white w-full'>
 
                               <div className="movieinfo flex justify-between">
                                 <div className="name flex flex-col items-center pb-4">
-                                  <span className='font-bold text-2xl'>{movie.name || movie.title}</span>
+                                  <span className='font-bold text-2xl overflow-hidden'>{movie.name || movie.title}</span>
                                   <div className='flex '>
                                     {
                                       // parseInt(movie?.vote_average) /2 and then print that number of stars(AiTwotoneStar) 
@@ -231,15 +231,12 @@ function Body({ pageName = "Trending Today" }) {
 
                               </div>
                             </div>
-                            <div className='movie-description p-5 mt-32'>
+                            <div className='movie-description p-5 mt-32 w-full'>
                               <div className="plotsummary">
                                 <div className="title font-bold mb-2">Plot Summary</div>
                                 <div className='font-thin text-sm mb-2'>{furtherDetails?.overview}</div>
                               </div>
                               <div className='flex justify-around'>
-
-                                {/* <span className='font-thin'>Drama</span>
-                              <span className='font-thin'>Thriller</span> */}
                                 {
                                   furtherDetails?.genres?.map((item) => {
                                     return (<span className='font-thin'>{item.name}</span>)
@@ -270,30 +267,6 @@ function Body({ pageName = "Trending Today" }) {
                                       )
                                     })
                                   }
-                                  {/* <div className="people1">
-                                    <img className='w-9 h-9 rounded-md'
-                                      src="https://hips.hearstapps.com/hmg-prod/images/christian-bale-attends-the-premiere-of-foxs-ford-v-ferrari-news-photo-1694031112.jpg?crop=0.668xw:1.00xh;0.112xw,0&resize=640:*"
-                                      alt="" />
-                                    <div className="name font-thin">Joaquin Phoenixn</div>
-                                  </div>
-                                  <div className="people1">
-                                    <img className='w-9 h-9 rounded-md'
-                                      src="https://hips.hearstapps.com/hmg-prod/images/christian-bale-attends-the-premiere-of-foxs-ford-v-ferrari-news-photo-1694031112.jpg?crop=0.668xw:1.00xh;0.112xw,0&resize=640:*"
-                                      alt="" />
-                                    <div className="name font-thin">Joaquin Phoenix</div>
-                                  </div>
-                                  <div className="people1">
-                                    <img className='w-9 h-9 rounded-md'
-                                      src="https://hips.hearstapps.com/hmg-prod/images/christian-bale-attends-the-premiere-of-foxs-ford-v-ferrari-news-photo-1694031112.jpg?crop=0.668xw:1.00xh;0.112xw,0&resize=640:*"
-                                      alt="" />
-                                    <div className="name font-thin">Joaquin Phoenix</div>
-                                  </div>
-                                  <div className="people1">
-                                    <img className='w-9 h-9 rounded-md'
-                                      src="https://hips.hearstapps.com/hmg-prod/images/christian-bale-attends-the-premiere-of-foxs-ford-v-ferrari-news-photo-1694031112.jpg?crop=0.668xw:1.00xh;0.112xw,0&resize=640:*"
-                                      alt="" />
-                                    <div className="name font-thin">Joaquin Phoenix</div> */}
-                                  {/* </div> */}
                                 </div>
                               </div>
                             </div>
