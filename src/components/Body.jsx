@@ -165,10 +165,10 @@ function Body({ pageName = "Trending Today" }) {
                             className="movie hover:cursor-pointer w-[300px] h-[450px] bg-black"
                             key={movie.id}
                           >
-                            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[395px] bg-cover' />
+                            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[395px] w-[100%] bg-cover' />
                             <div className="description text-white flex justify-between px-5 py-3 bg-[#373b69] ">
                               <span className="moviename font-bold text-xl ">{(pageName == "TVSeries") ? movie.name : movie.original_title || movie.name}</span>
-                              <span className="rating bg-black w-9 h-9 flex justify-center items-center">{movie.vote_average.toFixed(1)}</span>
+                              <span className="rating min-w-[2.25rem] h-9 flex justify-center items-center bg-yellow-400 text-black">{movie.vote_average.toFixed(1)}</span>
                             </div>
                           </div>
 
@@ -180,14 +180,14 @@ function Body({ pageName = "Trending Today" }) {
 
                           <div className=''>
                             <div className='w-full largemobile:h-80 rounded-3xl'>
-                              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[200px] w-[100%]  rounded-3xl' />
+                              <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[50vh] w-full rounded-3xl' />
                             </div>
-                            <div className='movie rounded-2xl shadow-xl  p-5 border absolute top-[11rem] bg-white w-full'>
+                            <div className='movie rounded-2xl shadow-xl  p-5 border absolute top-[20rem] left-[10%] bg-white w-[80%]'>
 
                               <div className="movieinfo flex justify-between">
                                 <div className="name flex flex-col items-center pb-4">
                                   <span className='font-bold text-2xl overflow-hidden'>{movie.name || movie.title}</span>
-                                  <div className='flex '>
+                                  <div className='flex self-start '>
                                     {
                                       // parseInt(movie?.vote_average) /2 and then print that number of stars(AiTwotoneStar) 
                                     }
@@ -231,10 +231,10 @@ function Body({ pageName = "Trending Today" }) {
 
                               </div>
                             </div>
-                            <div className='movie-description p-5 mt-32 w-full'>
+                            <div className='movie-description p-5 mt-10 w-full'>
                               <div className="plotsummary">
-                                <div className="title font-bold mb-2">Plot Summary</div>
-                                <div className='font-thin text-sm mb-2'>{furtherDetails?.overview}</div>
+                                <div className="title font-bold mb-1">Plot Summary</div>
+                                <div className='font-thin text-sm mb-1'>{furtherDetails?.overview}</div>
                               </div>
                               <div className='flex justify-around'>
                                 {
@@ -243,14 +243,14 @@ function Body({ pageName = "Trending Today" }) {
                                   })
                                 }
                               </div>
-                              <div className="cast pt-3 flex flex-col">
+                              <div className="cast  flex flex-col">
                                 <div className="title font-bold mb-4">Cast</div>
                                 <div className="people flex justify-between">
                                   {
                                     credits?.slice(0, 4).map((item) => {
 
                                       return (
-                                        <div className="people1">
+                                        <div className="people1 max-w-lg">
                                           {
                                             item.profile_path ?
                                               <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
