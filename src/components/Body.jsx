@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import { FaYoutube } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import * as Dialog from '@radix-ui/react-dialog';
 import { AiTwotoneStar } from "react-icons/ai";
 // import { Cross2Icon } from '@radix-ui/react-icons';
@@ -9,7 +10,48 @@ function Body({ pageName = "Trending Today" }) {
   const [data, setData] = useState([])
   const [furtherDetails, setFurtherDetails] = useState(
   );
-  const [credits, setCredits] = useState();
+  const [videoKey,setVideoKey]=useState();
+  const movieGenres = {
+    "Action": 28,
+    "Adventure": 12,
+    "Animation": 16,
+    "Comedy": 35,
+    "Crime": 80,
+    "Documentary": 99,
+    "Drama": 18,
+    "Family": 10751,
+    "Fantasy": 14,
+    "History": 36,
+    "Horror": 27,
+    "Music": 10402,
+    "Mystery": 9648,
+    "Romance": 10749,
+    "Science Fiction": 878,
+    "TV Movie": 10770,
+    "Thriller": 53,
+    "War": 10752,
+    "Western": 37
+  }
+  const tvShowGenres = {
+    "Action & Adventure": 10759,
+    "Animation": 16,
+    "Comedy": 35,
+    "Crime": 80,
+    "Documentary": 99,
+    "Drama": 18,
+    "Family": 10751,
+    "Kids": 10762,
+    "Mystery": 9648,
+    "News": 10763,
+    "Reality": 10764,
+    "Sci-Fi & Fantasy": 10765,
+    "Soap": 10766,
+    "Talk": 10767,
+    "War & Politics": 10768,
+    "Western": 37
+  };
+
+  const [credits, setCredits] = useState([]);
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -99,7 +141,24 @@ function Body({ pageName = "Trending Today" }) {
                             }
                             )
                             .catch(err => console.error(err));
-                        }} >
+                          fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`,  {
+                            method: 'GET',
+                            headers: {
+                              accept: 'application/json',
+                              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjBlZWFjNTJhNmNhZTM5ZjQ5YzFjZjA5Yjk0MjdkNiIsInN1YiI6IjY1NTM0ZWQ1MDgxNmM3MDBjM2RhOGY4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mRL8Ur8nypSWsAofUiWGzi9mzTg0CNM1hs8edi5b2cg'
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(response => 
+                              {
+                                console.log(response)
+                                setVideoKey(response?.results[0].key)
+                              }
+                            )
+                            .catch(err => console.error(err));
+                        }}
+
+                        >
 
 
                           <div
@@ -119,7 +178,7 @@ function Body({ pageName = "Trending Today" }) {
                         <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] rounded-t-3xl max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  bg-white  pt-0 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none font-sans ">
                           <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0 h-fit" />
 
-                          <div className='container  '>
+                          <div className='container'>
                             <div className=''>
                               <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[200px] w-fit rounded-3xl' />
                             </div>
@@ -127,8 +186,11 @@ function Body({ pageName = "Trending Today" }) {
 
                               <div className="movieinfo flex justify-between">
                                 <div className="name flex flex-col items-center pb-4">
-                                  <span className='font-bold text-2xl'>{movie.name}</span>
+                                  <span className='font-bold text-2xl'>{movie.name || movie.title}</span>
                                   <div className='flex '>
+                                    {
+                                      // parseInt(movie?.vote_average) /2 and then print that number of stars(AiTwotoneStar) 
+                                    }
                                     <AiTwotoneStar className=' bg-[#f7c614] rounded-full' />
                                     <AiTwotoneStar className=' bg-[#f7c614] rounded-full' />
                                     <AiTwotoneStar className=' bg-[#f7c614] rounded-full' />
@@ -136,14 +198,18 @@ function Body({ pageName = "Trending Today" }) {
                                   </div>
 
                                 </div>
-                                <div className="youtube pr-8 flex items-baseline">
+                                <Link 
+                                to={`https://www.youtube.com/watch?v=${videoKey}`}
+                                className="youtube pr-8 flex items-baseline"
+                                target='_blank'
+                                >
                                   <FaYoutube size={44} />
-                                </div>
+                                </Link>
                               </div>
                               <div className="moredetails flex justify-between">
                                 <div className="year flex flex-col">
                                   <div className='font-bold'>Year</div>
-                                  <div className='font-thin'>{furtherDetails?.release_date?furtherDetails?.release_date.slice(0,4):'-'}</div>
+                                  <div className='font-thin'>{furtherDetails?.release_date ? furtherDetails?.release_date.slice(0, 4) : '-'}</div>
                                 </div>
                                 <div className="type">
                                   <div className='font-bold'>Type</div>
@@ -152,10 +218,10 @@ function Body({ pageName = "Trending Today" }) {
                                 <div className="Hour">
                                   <div className='font-bold'>Hour</div>
                                   {
-                                      furtherDetails?.runtime?
-                                    <div className='font-thin'>{parseInt(furtherDetails?.runtime/60)}hrs {(furtherDetails?.runtime%60).toFixed(0)}mins </div>
-                                    :
-                                    ' - '
+                                    furtherDetails?.runtime ?
+                                      <div className='font-thin'>{parseInt(furtherDetails?.runtime / 60)}hrs {(furtherDetails?.runtime % 60).toFixed(0)}mins </div>
+                                      :
+                                      ' - '
                                   }
                                 </div>
                                 <div className="Director">
@@ -171,15 +237,40 @@ function Body({ pageName = "Trending Today" }) {
                                 <div className='font-thin text-sm mb-2'>{furtherDetails?.overview}</div>
                               </div>
                               <div className='flex justify-around'>
-                                <span className='font-thin'>Drama</span>
-                                <span className='font-thin'>Romance</span>
-                                <span className='font-thin'>Thriller</span>
-                                <span className='font-thin'>Sci-Fi</span>
+
+                                {/* <span className='font-thin'>Drama</span>
+                              <span className='font-thin'>Thriller</span> */}
+                                {
+                                  furtherDetails?.genres?.map((item) => {
+                                    return (<span className='font-thin'>{item.name}</span>)
+                                  })
+                                }
                               </div>
                               <div className="cast pt-3 flex flex-col">
                                 <div className="title font-bold mb-4">Cast</div>
                                 <div className="people flex justify-between">
-                                  <div className="people1">
+                                  {
+                                    credits?.slice(0, 4).map((item) => {
+
+                                      return (
+                                        <div className="people1">
+                                          {
+                                            item.profile_path ?
+                                              <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
+                                                className='w-14 h-14 rounded-md'
+                                                alt="" /> :
+                                              <img src="https://cdn.dribbble.com/users/47195/screenshots/524523/cantfind.jpg"
+                                                alt="movie image"
+                                                className='w-14 h-14 rounded-md' />
+
+                                          }
+                                          <span className="name font-thin">{item.name}</span>
+                                        </div>
+
+                                      )
+                                    })
+                                  }
+                                  {/* <div className="people1">
                                     <img className='w-9 h-9 rounded-md'
                                       src="https://hips.hearstapps.com/hmg-prod/images/christian-bale-attends-the-premiere-of-foxs-ford-v-ferrari-news-photo-1694031112.jpg?crop=0.668xw:1.00xh;0.112xw,0&resize=640:*"
                                       alt="" />
@@ -201,8 +292,8 @@ function Body({ pageName = "Trending Today" }) {
                                     <img className='w-9 h-9 rounded-md'
                                       src="https://hips.hearstapps.com/hmg-prod/images/christian-bale-attends-the-premiere-of-foxs-ford-v-ferrari-news-photo-1694031112.jpg?crop=0.668xw:1.00xh;0.112xw,0&resize=640:*"
                                       alt="" />
-                                    <div className="name font-thin">Joaquin Phoenix</div>
-                                  </div>
+                                    <div className="name font-thin">Joaquin Phoenix</div> */}
+                                  {/* </div> */}
                                 </div>
                               </div>
                             </div>
