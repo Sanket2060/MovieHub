@@ -4,7 +4,7 @@ import { FaYoutube } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import * as Dialog from '@radix-ui/react-dialog';
 import { AiTwotoneStar } from "react-icons/ai";
-// import { Cross2Icon } from '@radix-ui/react-icons';
+import { IoCaretBackCircle } from "react-icons/io5";// import { Cross2Icon } from '@radix-ui/react-icons';
 
 function Body({ pageName = "Trending Today" }) {
   const [data, setData] = useState([])
@@ -179,6 +179,10 @@ function Body({ pageName = "Trending Today" }) {
                           <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0 h-fit" />
 
                           <div className=''>
+                            <Dialog.Close asChild>
+
+                            <button className='absolute z-50 top-7 left-5'><IoCaretBackCircle size={38} /></button>
+                            </Dialog.Close>
                             <div className='w-full largemobile:h-80 rounded-3xl'>
                               <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[50vh] w-full rounded-3xl' />
                             </div>
