@@ -178,7 +178,7 @@ function Body({ pageName = "Trending Today" }) {
                         <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] rounded-t-3xl max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  bg-white  pt-0 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none font-sans ">
                           <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0 h-fit" />
 
-                          <div className=''>
+                          <div className='overflow-auto max-h-[75vh]'>
                             <Dialog.Close asChild>
 
                             <button className='absolute z-50 top-7 left-5'><IoCaretBackCircle size={38} /></button>
