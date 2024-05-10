@@ -162,11 +162,11 @@ function Body({ pageName = "Trending Today" }) {
 
 
                           <div
-                            className="movie hover:cursor-pointer w-[300px] h-[450px] bg-black"
+                            className="movie rounded-md hover:cursor-pointer w-[300px] h-[450px] bg-black"
                             key={movie.id}
                           >
-                            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[395px] w-[100%] bg-cover' />
-                            <div className="description text-white flex justify-between px-5 py-3 bg-[#373b69] ">
+                            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[395px] w-[100%] bg-cover rounded-t-md' />
+                            <div className="description text-white flex justify-between px-5 py-3 bg-[#373b69] rounded-b-md ">
                               <span className="moviename font-bold text-xl ">{(pageName == "TVSeries") ? movie.name : movie.original_title || movie.name}</span>
                               <span className="rating min-w-[2.25rem] h-9 flex justify-center items-center bg-yellow-400 text-black">{movie.vote_average.toFixed(1)}</span>
                             </div>
@@ -186,11 +186,11 @@ function Body({ pageName = "Trending Today" }) {
                             <div className='w-full largemobile:h-80 rounded-3xl'>
                               <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[50vh] w-full rounded-3xl' />
                             </div>
-                            <div className='movie rounded-2xl shadow-xl  p-5 border absolute top-[20rem] left-[10%] bg-white w-[80%]'>
+                            <div className='movie rounded-2xl shadow-xl  p-5 border sticky top-[0] left-[5%] sm:left-[10%] bg-white w-[90%] sm:w-[80%]  sm:visible'>
 
                               <div className="movieinfo flex justify-between">
                                 <div className="name flex flex-col items-center pb-4">
-                                  <span className='font-bold text-2xl overflow-hidden'>{movie.name || movie.title}</span>
+                                  <div className='font-bold text-2xl'>{movie.name || movie.title}</div>
                                   <div className='flex self-start '>
                                     {
                                       // parseInt(movie?.vote_average) /2 and then print that number of stars(AiTwotoneStar) 
@@ -210,7 +210,7 @@ function Body({ pageName = "Trending Today" }) {
                                   <FaYoutube size={44} />
                                 </Link>
                               </div>
-                              <div className="moredetails flex justify-between">
+                              <div className="moredetails flex justify-between ">
                                 <div className="year flex flex-col">
                                   <div className='font-bold'>Year</div>
                                   <div className='font-thin'>{furtherDetails?.release_date ? furtherDetails?.release_date.slice(0, 4) : '-'}</div>
@@ -230,12 +230,12 @@ function Body({ pageName = "Trending Today" }) {
                                 </div>
                                 <div className="Director">
                                   <div className='font-bold'>Director</div>
-                                  <div className='font-thin'>Spike Joulues</div>
+                                  <div className='font-thin'>Spike Joulus</div>
                                 </div>
 
                               </div>
                             </div>
-                            <div className='movie-description p-5 mt-10 w-full'>
+                            <div className='movie-description p-5 sm:mt-10 w-full'>
                               <div className="plotsummary">
                                 <div className="title font-bold mb-1">Plot Summary</div>
                                 <div className='font-thin text-sm mb-1'>{furtherDetails?.overview}</div>
@@ -254,7 +254,7 @@ function Body({ pageName = "Trending Today" }) {
                                     credits?.slice(0, 4).map((item) => {
 
                                       return (
-                                        <div className="people1 max-w-lg">
+                                        <div className="people1 w-1/4">
                                           {
                                             item.profile_path ?
                                               <img src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
@@ -265,7 +265,7 @@ function Body({ pageName = "Trending Today" }) {
                                                 className='w-14 h-14 rounded-md' />
 
                                           }
-                                          <span className="name font-thin">{item.name}</span>
+                                          <div className="name font-thin w-14 overflow-wrap">{item.name}</div>
                                         </div>
 
                                       )
