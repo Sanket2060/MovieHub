@@ -201,7 +201,7 @@ function Search() {
                         <div className='w-full largemobile:h-80 rounded-3xl'>
                           <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt="movie image" className='h-[50vh] w-full rounded-3xl' />
                         </div>
-                        <div className='movie rounded-2xl shadow-xl  p-5 border absolute top-[20rem] left-[10%] bg-white w-[80%]'>
+                        <div className='movie rounded-2xl shadow-xl  p-5 border sticky top-[0] left-[5%] sm:left-[10%] bg-white w-[90%] sm:w-[80%]  sm:visible'>
 
                           <div className="movieinfo flex justify-between">
                             <div className="name flex flex-col items-center pb-4">
